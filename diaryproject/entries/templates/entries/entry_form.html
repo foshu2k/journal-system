@@ -1,0 +1,33 @@
+{% extends 'entries/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form method="POST">
+    <div class="form-container">
+        {% csrf_token %}
+        
+        {{ form.non_field_errors }}            
+
+        <div class="title">
+            {{ form.title.label_tag }}
+            <br>
+            {{ form.title }}
+        </div>
+
+        <div class="content">
+            {{ form.content.label_tag }}
+            <br>
+            {{ form.content }}
+        </div>
+    </div>
+
+    <button type="button" id="micBtn" class="mic-btn">Start Recording</button>
+    <button type="submit" class="submit-btn">Save</button>
+</form>
+
+{% endblock %}
+
+{% block javascript %}
+    <script src="{% static 'entries/js/script.js' %}"></script>
+{% endblock %}

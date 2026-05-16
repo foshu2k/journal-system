@@ -1,0 +1,13 @@
+{% extends 'entries/base.html' %}
+
+{% block content %}
+
+<a href="{% url 'create_entry' %}" class="create-entry-btn">Add Entry</a>
+
+{% for entry in entries %}
+    <h3>
+        <a href="/entry/{{ entry.id }}">{{ entry.title }}</a>
+    </h3>
+{% endfor %}
+
+{% endblock %}
