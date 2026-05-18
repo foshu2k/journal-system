@@ -1,0 +1,60 @@
+{% extends 'entries/base.html' %}
+{% block content %}
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">LUMEN</div>
+      <div class="avatar" aria-label="Profile"></div>
+    </header>
+
+    <div class="chip-row">
+      <button class="chip active">All</button>
+      <button class="chip">Personal</button>
+      <button class="chip">Work</button>
+      <button class="chip">Travel</button>
+      <button class="chip">Dreams</button>
+      <button class="chip">Gratitude</button>
+      <button class="chip">Ideas</button>
+    </div>
+
+    <section class="hero">
+      <div class="greeting">Good evening,</div>
+      <h1>Your story<br/><span>continues today.</span></h1>
+    </section>
+
+    <section class="featured-card">
+      <div class="label">Today · May 18</div>
+      <h2>Capture the moment before it fades.</h2>
+      <a href="diary.html" class="btn">Start Writing →</a>
+    </section>
+
+    <div class="section-title">
+      <h2>Recent Entries</h2>
+      <a href="entries.html">View all</a>
+    </div>
+
+    <div class="entry-list">
+      <article class="card entry-mini">
+        <div class="swatch"></div>
+        <div class="meta">
+          <h3>A quiet morning walk</h3>
+          <p>May 17 · 3 min read</p>
+        </div>
+      </article>
+      <article class="card entry-mini">
+        <div class="swatch" style="background:linear-gradient(135deg,#FDE0B2,#E491A7)"></div>
+        <div class="meta">
+          <h3>Coffee with old friends</h3>
+          <p>May 15 · 5 min read</p>
+        </div>
+      </article>
+      <article class="card entry-mini">
+        <div class="swatch" style="background:linear-gradient(135deg,#7A4B83,#90426F)"></div>
+        <div class="meta">
+          <h3>Dreams about the sea</h3>
+          <p>May 12 · 2 min read</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+{% endblock %}

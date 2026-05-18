@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from .models import Entry
 from .forms import EntryForm
 
+def home(request):
+    return render(request, "entries/home.html")
+
 def entry_list(request):
     entries = Entry.objects.all()
     return render(request, "entries/entry_list.html", {"entries" : entries})
