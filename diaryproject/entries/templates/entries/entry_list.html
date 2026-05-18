@@ -2,12 +2,63 @@
 
 {% block content %}
 
-<a href="{% url 'create_entry' %}" class="create-entry-btn">Add Entry</a>
+<!-- Header Section -->
+<header class="py-3">
+    <div class="row">
 
-{% for entry in entries %}
-    <h3>
-        <a href="/entry/{{ entry.id }}">{{ entry.title }}</a>
-    </h3>
-{% endfor %}
+        <!-- Name or Greeting -->
+        <div class="col">
+            <div class="border border-1">
+                Hi, Mark!
+            </div>
+        </div>
+
+        <!-- User Profile -->
+        <div class="col">
+            <div class="border border-1">
+                User Profile
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+
+    <!-- Calendar Section -->
+    <section class="py-5 text-center border border-1">
+        <div class="table">
+            Calendar
+        </div>
+    </section>
+    
+    <!-- Entry Section -->
+    <section class="py-2">
+        <div class="p-5 border border-1 text-center">
+            <a href="{% url 'create_entry' %}" class="btn btn-primary btn-lg w-100">Add Entry</a>
+            <h1 class="fs-6">Create your new entry</h1>
+        </div>
+    </section>
+
+    <!-- Diary List Section -->
+    <section class="py-2 row g-1">
+
+        <!-- Section Label -->
+        <div> 
+            <h1 class="fs-3">
+                Diary List
+            </h1>
+        </div>
+
+        <!-- Diary List -->
+        {% for entry in entries %}
+            <div class="p-4 border border-1">
+                <h1 class="fs-5">
+                    <a href="/entry/{{ entry.id }}">{{ entry.title }}</a>
+                </h1> 
+            </div>
+        {% endfor %}
+    </section>
+    
+</main>
 
 {% endblock %}
