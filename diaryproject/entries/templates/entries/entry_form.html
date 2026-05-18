@@ -3,8 +3,8 @@
 
 {% block content %}
 
-<form method="POST">
-    <div class="form-container">
+<form class="mb-1 border border-1" method="POST">
+    <div>
         {% csrf_token %}
         
         {{ form.non_field_errors }}            
