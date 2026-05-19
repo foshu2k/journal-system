@@ -98,34 +98,6 @@ p  { color: var(--c-text-muted); }
 }
 .card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 
-/* Chips row (categories / quick filters) */
-.chip-row {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding-bottom: 6px;
-  margin: 0 -4px 20px;
-  padding-left: 4px;
-  scrollbar-width: none;
-}
-.chip-row::-webkit-scrollbar { display: none; }
-
-.chip {
-  flex-shrink: 0;
-  padding: 8px 16px;
-  border-radius: var(--radius-pill);
-  background: var(--c-surface);
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--c-text-muted);
-  border: 1px solid transparent;
-  white-space: nowrap;
-}
-.chip.active {
-  background: var(--c-primary);
-  color: var(--c-text-dark);
-}
-
 /* Inputs */
 
 .input, .textarea {
