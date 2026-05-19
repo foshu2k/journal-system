@@ -1,8 +1,26 @@
 {% extends 'entries/base.html' %}
 
 {% block content %}
-    <h2>{{ entry.title }}</h2>
-    <p>{{ entry.content }}</p>
-    <p>Created at: {{ entry.created_at }}</p>
-    <p>Updated at: {{ entry.updated_at }}</p>
+<div class="app">
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <a href="{% url 'entry_list' %}" class="btn btn-secondary entry-detail-back">← Back</a>
+    </div>
+
+    <!-- Entry Header Card -->
+    <div class="featured-card">
+        <div class="label">{{ entry.created_at|date:"F d, Y" }}</div>
+        <h2>{{ entry.title }}</h2>
+        <div class="entry-detail-meta">
+            Updated {{ entry.updated_at|date:"M d, Y · h:i A" }}
+        </div>
+    </div>
+
+    <!-- Entry Content -->
+    <div class="card entry-detail-card">
+        <p class="entry-detail-content">{{ entry.content }}</p>
+    </div>
+
+</div>
 {% endblock %}

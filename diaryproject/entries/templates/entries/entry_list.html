@@ -1,28 +1,32 @@
 {% extends 'entries/base.html' %}
 
 {% block content %}
+<div class="app">
 
-<!-- Header Section -->
-<header class="py-3">
-    <div class="row">
-
-        <!-- Name or Greeting -->
-        <div class="col">
-            <div class="border border-1">
-                Hi, Mark!
-            </div>
-        </div>
-
-        <!-- User Profile -->
-        <div class="col">
-            <div class="border border-1">
-                User Profile
-            </div>
-        </div>
+    <!-- Top Bar -->
+    <div class="topbar">
+        <span class="brand">My Diary</span>
+        <div class="avatar"></div>
     </div>
-</header>
 
-<main>
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1>Entries</h1>
+        <p>All your diary entries in one place.</p>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" class="input" placeholder="Search entries…" />
+    </div>
+
+    <!-- Filter Chips -->
+    <div class="chip-row">
+        <span class="chip active">All</span>
+        <span class="chip">Year</span>
+        <span class="chip">Month</span>
+        <span class="chip">Day</span>
+    </div>
 
     <!-- Calendar Section -->
     <section class="py-5 text-center border border-1">
@@ -39,26 +43,48 @@
         </div>
     </section>
 
-    <!-- Diary List Section -->
-    <section class="py-2 row g-1">
-
-        <!-- Section Label -->
-        <div> 
-            <h1 class="fs-3">
-                Diary List
-            </h1>
-        </div>
-
-        <!-- Diary List -->
-        {% for entry in entries %}
-            <div class="p-4 border border-1">
-                <h1 class="fs-5">
-                    <a href="/entry/{{ entry.id }}">{{ entry.title }}</a>
-                </h1> 
-            </div>
+    <div class="entry-grid">
+        {% for entry in entries|slice:":2" %}
+            <a href="/entry/{{ entry.id }}">
+                <div class="entry-card">
+                    <span class="date">{{ entry.date|date:"M d" }}</span>
+                    <h3>{{ entry.title }}</h3>
+                    <p class="preview">{{ entry.content|truncatechars:100 }}</p>
+                </div>
+            </a>
+        {% empty %}
+            <p>No recent entries.</p>
         {% endfor %}
-    </section>
-    
-</main>
+    </div>
 
+    <!-- All Entries Grouped by Month -->
+    <div style="overflow-y: auto; padding-bottom: 32px;">
+
+        {% regroup entries by date|date:"F Y" as entries_by_month %}
+
+        {% for month_group in entries_by_month %}
+
+            <!-- Month Divider -->
+            <div class="month-divider">
+                <span>{{ month_group.grouper }}</span>
+                </div>
+            </div>
+
+            <div class="entry-grid">
+                {% for entry in month_group.list %}
+                    <a href="/entry/{{ entry.id }}">
+                        <div class="entry-card">
+                            <span class="date">{{ entry.date|date:"M d" }}</span>
+                            <h3>{{ entry.title }}</h3>
+                            <p class="preview">{{ entry.content|truncatechars:100 }}</p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
 {% endblock %}
