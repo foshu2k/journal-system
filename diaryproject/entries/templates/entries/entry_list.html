@@ -28,10 +28,20 @@
         <span class="chip">Day</span>
     </div>
 
-    <!-- Recents Section -->
-    <div class="section-title">
-        <h2>Recents</h2>
-    </div>
+    <!-- Calendar Section -->
+    <section class="py-5 text-center border border-1">
+        <div class="table">
+            <a class="btn btn-lg btn-danger" href="calendar">Temp Calendar</a>
+        </div>
+    </section>
+    
+    <!-- Entry Section -->
+    <section class="py-2">
+        <div class="p-5 border border-1 text-center">
+            <a href="{% url 'create_entry' %}" class="btn btn-primary btn-lg w-100">Add Entry</a>
+            <h1 class="fs-6">Create your new entry</h1>
+        </div>
+    </section>
 
     <div class="entry-grid">
         {% for entry in entries|slice:":2" %}
